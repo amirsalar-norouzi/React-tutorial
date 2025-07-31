@@ -1,8 +1,13 @@
 import React,{ StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import "./app.css"
-import Test from './test'
 
+class Hi extends React.Component{
+  render(){
+    return(
+      <h1>hi</h1>
+    )
+  }
+}
 
-
-createRoot(document.getElementById('root')).render(<Test/>);
+export default Hi
