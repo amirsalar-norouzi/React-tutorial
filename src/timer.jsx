@@ -8,27 +8,30 @@ class Timer extends React.Component{
   constructor(){
     super()
     this.state={
-      time: new Date().toLocaleTimeString()
+      time:20
     }
   }
   componentDidMount(){
       interval=setInterval(() => {
       this.setState({
-        time: new Date().toLocaleTimeString()
+        time: (this.state.time - 1)
       }
       )
     },1000);
   }
   componentDidUpdate(){
-    if(this.state.time==="6:31:20 PM"){
+    if(this.state.time===0){
       clearInterval(interval)
     }
   }
   render(){
     return(
-      <h2 className='timer'>
+      <div>
+        <h2 className='timer'>
           it is {this.state.time}
-      </h2>
+        </h2>
+        <button onClick={this.props.handleTitle}>Change Title</button>
+      </div>
     )
   }
 }

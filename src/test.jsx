@@ -5,11 +5,22 @@ import Hi from './hi'
 import Timer from './timer'
 
 class Test extends React.Component{
+  constructor(){
+    super()
+    this.state={
+      title:"hi my friends"
+    }
+  }
+  handleTitle=()=>{
+    this.setState({
+      title:"welcome to codeyad"
+    })
+  }
   render(){
     return (
       <div className='main'>
-        <Hi/>
-        <Timer/>
+        <Hi title={this.state.title}/>
+        <Timer handleTitle={this.handleTitle}/>
       </div>
     )
   }
