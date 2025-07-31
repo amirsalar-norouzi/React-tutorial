@@ -11,13 +11,19 @@ class Timer extends React.Component{
       time:20
     }
   }
-  componentDidMount(){
-      interval=setInterval(() => {
+  startInterval=()=>{
+    interval=setInterval(() => {
       this.setState({
         time: (this.state.time - 1)
       }
       )
     },1000);
+  }
+  componentDidMount(){
+    
+  }
+  stopInterval=()=>{
+    clearInterval(interval)
   }
   componentDidUpdate(){
     if(this.state.time===0){
@@ -26,12 +32,16 @@ class Timer extends React.Component{
   }
   render(){
     return(
-      <div>
+      <>
         <h2 className='timer'>
           it is {this.state.time}
         </h2>
-        <button onClick={this.props.handleTitle}>Change Title</button>
-      </div>
+        <div className='container-button'>
+        <button className='button-style'  onClick={this.props.handleTitle}>Change Title</button>
+        <button className='button-style' onClick={this.startInterval}>Start</button>
+        <button className='button-style' onClick={this.stopInterval}>Stop</button>
+        </div>
+      </>
     )
   }
 }
