@@ -50,7 +50,6 @@ class Timer extends React.Component{
       minute:0,
       second:0
     })
-
   }
 
 
