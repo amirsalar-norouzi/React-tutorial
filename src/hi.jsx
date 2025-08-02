@@ -5,7 +5,10 @@ import "./app.css"
 class Hi extends React.Component{
   render(){
     return(
-      <h1>{this.props.title}</h1>
+      <>
+        <h1>{this.props.title}</h1>
+        <h2>{this.props.content}</h2>
+      </>
     )
   }
 }

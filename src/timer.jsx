@@ -8,38 +8,66 @@ class Timer extends React.Component{
   constructor(){
     super()
     this.state={
-      time:20
+      hour:0,
+      minute:0,
+      second:0,
+      isStart:false
     }
   }
   startInterval=()=>{
-    interval=setInterval(() => {
+    if(this.state.isStart==false){
+      this.state.isStart==true
+      interval=setInterval(() => {
       this.setState({
-        time: (this.state.time - 1)
+        second:this.state.second + 1
       }
       )
+      if(this.state.second==59){
+        this.setState({
+          second:0,
+          minute:this.state.minute + 1
+        })
+      }
+      if(this.state.minute==59){
+        this.setState({
+          minute:0,
+          hour:this.state.hour + 1
+        })
+      }
     },1000);
-  }
-  componentDidMount(){
-    
+    }
   }
   stopInterval=()=>{
     clearInterval(interval)
+    this.setState({
+      isStart:false
+    })
   }
-  componentDidUpdate(){
-    if(this.state.time===0){
-      clearInterval(interval)
-    }
+  resetIterval=()=>{
+    this.stopInterval()
+    this.setState({
+      hour:0,
+      minute:0,
+      second:0
+    })
+
   }
+
+
   render(){
+    let h=this.state.hour
+    let m=this.state.minute
+    let s=this.state.second
     return(
       <>
         <h2 className='timer'>
-          it is {this.state.time}
+          {`${h=h<10 ? "0"+h : h} : ${m=m<10 ? "0"+m : m} : ${s=s<10 ? "0"+s : s}`}
         </h2>
         <div className='container-button'>
         <button className='button-style'  onClick={this.props.handleTitle}>Change Title</button>
         <button className='button-style' onClick={this.startInterval}>Start</button>
         <button className='button-style' onClick={this.stopInterval}>Stop</button>
+        <button className='button-style' onClick={this.resetIterval}>Reset</button>
         </div>
       </>
     )

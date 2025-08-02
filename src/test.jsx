@@ -8,18 +8,21 @@ class Test extends React.Component{
   constructor(){
     super()
     this.state={
-      title:"hi my friends"
+      title:"React Project",
+      content:"this is a practice to more learn"
+      
     }
   }
   handleTitle=()=>{
     this.setState({
-      title:"welcome to codeyad"
+      title:"Change title succesfully"
+
     })
   }
   render(){
     return (
       <div className='main'>
-        <Hi title={this.state.title}/>
+        <Hi title={this.state.title} content={this.state.content}/>
         <Timer handleTitle={this.handleTitle}/>
       </div>
     )
