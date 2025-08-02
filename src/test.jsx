@@ -32,15 +32,20 @@ import Timer from './timer'
 const Test=()=>{
   const [title,setTitle] = useState("React Project")
   const [content,setContent] = useState("this is a practice to more learn")
+  const [isLight,setIslight] = useState(false)
+  
 
-  const handleTitle=()=>{
+  const handleText=()=>{
     setTitle("change title succesfully")
     setContent("change content succesfully")
   }
+  const handleIsligtht=()=>{
+    setIslight(!isLight)
+  }
   return(
-    <div className='main'>
-      <Hi title={title} content={content}/>
-      <Timer handleTitle={handleTitle}/>
+    <div className='main' style={{background:isLight ? "white" : "black"}}>
+      <Hi title={title} content={content} handleIsligtht={handleIsligtht} isLight={isLight}/>
+      <Timer handleText={handleText} handleIsligtht={handleIsligtht} isLight={isLight}/>
     </div>
   )
 

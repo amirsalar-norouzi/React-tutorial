@@ -6,8 +6,8 @@ class Hi extends React.Component{
   render(){
     return(
       <>
-        <h1>{this.props.title}</h1>
-        <h2>{this.props.content}</h2>
+        <h1 style={{color:this.props.isLight ? "black" : "white"}}>{this.props.title}</h1>
+        <h2 style={{color:this.props.isLight ? "black" : "white"}}>{this.props.content}</h2>
       </>
     )
   }

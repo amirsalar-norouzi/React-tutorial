@@ -44,7 +44,7 @@ class Timer extends React.Component{
     })
   }
   resetIterval=()=>{
-    this.stopInterval()
+    this.stopInterval();
     this.setState({
       hour:0,
       minute:0,
@@ -63,7 +63,10 @@ class Timer extends React.Component{
           {`${h=h<10 ? "0"+h : h} : ${m=m<10 ? "0"+m : m} : ${s=s<10 ? "0"+s : s}`}
         </h2>
         <div className='container-button'>
-        <button className='button-style'  onClick={this.props.handleTitle}>Change Title</button>
+        <button className='button-style'  onClick={this.props.handleText}>Change Title</button>
+        <button className='button-style'  onClick={this.props.handleIsligtht} style={{background:this.props.isLight ? "black" : "white" ,color:this.props.isLight ? "white" : "black"}}>
+          {this.props.isLight ? "Dark" : "Light"}
+        </button>
         <button className='button-style' onClick={this.startInterval}>Start</button>
         <button className='button-style' onClick={this.stopInterval}>Stop</button>
         <button className='button-style' onClick={this.resetIterval}>Reset</button>
