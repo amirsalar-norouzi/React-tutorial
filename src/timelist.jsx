@@ -1,14 +1,14 @@
 import Item from "./item"
 import "./app.css"
 
-const timeList=(props)=>{
+const TimeList=(props)=>{
     return(
         <div>
-            {props.children.map((c)=>{
+            {props.children.map((c)=>(
                 <Item key={Math.random()}>{c}</Item>
-            })}           
+            ))}           
         </div>
     )
 }
 
-export default timeList
+export default TimeList

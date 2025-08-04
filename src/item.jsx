@@ -2,7 +2,7 @@ import "./app.css"
 
 const Item=(props)=>{
     return(
-        <div>
+        <div className="item-style">
             {props.children}
         </div>
     )

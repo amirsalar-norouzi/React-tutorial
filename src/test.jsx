@@ -3,13 +3,13 @@ import { createRoot } from 'react-dom/client'
 import "./app.css"
 import Hi from './hi'
 import Timer from './timer'
-import timeList from './timelist'
+import TimeList from './timelist'
 
 const Test=()=>{
   const [title,setTitle] = useState("React Project")
   const [content,setContent] = useState("this is a practice to more learn")
   const [isLight,setIslight] = useState(false)
-  const [timeList,setTimelist] = useState(["10:31:32","11:32:12"])
+  const [timeList,setTimelist] = useState([])
 
   useEffect(()=>{
     console.log("use effect");
@@ -28,11 +28,9 @@ const Test=()=>{
   return(
     <div className='main' style={{background:isLight ? "white" : "black"}}>
       <Hi title={title} content={content} handleIsligtht={handleIsligtht} isLight={isLight}/>
-      <Timer handleText={handleText} handleIsligtht={handleIsligtht} isLight={isLight}/>
-      <timeList>
-        {timeList}
-      </timeList>
-    </div>
+      <Timer handleText={handleText} handleIsligtht={handleIsligtht} isLight={isLight} timeList={timeList} setTimelist={setTimelist}/>
+   </div>
+    
   )
 
 }
