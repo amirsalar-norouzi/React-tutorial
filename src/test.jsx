@@ -1,39 +1,22 @@
-import React,{ StrictMode, use, useState } from 'react'
+import React,{ StrictMode, use, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import "./app.css"
 import Hi from './hi'
 import Timer from './timer'
-
-// class Test extends React.Component{
-//   constructor(){
-//     super()
-//     this.state={
-//       title:"React Project",
-//       content:"this is a practice to more learn"
-      
-//     }
-//   }
-//   handleTitle=()=>{
-//     this.setState({
-//       title:"Change title succesfully"
-
-//     })
-//   }
-//   render(){
-//     return (
-//       <div className='main'>
-//         <Hi title={this.state.title} content={this.state.content}/>
-//         <Timer handleTitle={this.handleTitle}/>
-//       </div>
-//     )
-//   }
-// }
+import timeList from './timelist'
 
 const Test=()=>{
   const [title,setTitle] = useState("React Project")
   const [content,setContent] = useState("this is a practice to more learn")
   const [isLight,setIslight] = useState(false)
-  
+  const [timeList,setTimelist] = useState(["10:31:32","11:32:12"])
+
+  useEffect(()=>{
+    console.log("use effect");
+    return ()=>{
+      
+    }
+  },[isLight])
 
   const handleText=()=>{
     setTitle("change title succesfully")
@@ -46,6 +29,9 @@ const Test=()=>{
     <div className='main' style={{background:isLight ? "white" : "black"}}>
       <Hi title={title} content={content} handleIsligtht={handleIsligtht} isLight={isLight}/>
       <Timer handleText={handleText} handleIsligtht={handleIsligtht} isLight={isLight}/>
+      <timeList>
+        {timeList}
+      </timeList>
     </div>
   )
 
