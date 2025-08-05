@@ -2,6 +2,8 @@ import React,{ StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import "./app.css"
 import TimeList from './timelist'
+import {TestContext } from './testContext'
+import Item from './item'
 
 var interval
 
@@ -55,14 +57,15 @@ class Timer extends React.Component{
     })
   }
   handleSaveTime = ()=>{
-    let h=this.state.hour
-    let m=this.state.minute
-    let s=this.state.second
-    let newTime=`${h=h<10 ? "0"+h : h} : ${m=m<10 ? "0"+m : m} : ${s=s<10 ? "0"+s : s}`
+    
+    let newTime=document.querySelector(".timer").innerHTML
 
-    this.props.setTimelist([...this.props.timeList,newTime])
+    this.context.settimeArray([...this.context.timeArray,newTime])
     
   }
+  
+  static contextType=TestContext
+
 
 
   render(){
@@ -71,7 +74,7 @@ class Timer extends React.Component{
     let s=this.state.second
     return(
       <>
-        <h2 className='timer' onClick={this.handleSaveTime}>
+        <h2 className='timer' onClick={this.handleSaveTime} style={{color:this.context}}>
           {`${h=h<10 ? "0"+h : h} : ${m=m<10 ? "0"+m : m} : ${s=s<10 ? "0"+s : s}`}
         </h2>
         <div className='container-button'>
@@ -83,9 +86,6 @@ class Timer extends React.Component{
         <button className='button-style' onClick={this.stopInterval}>Stop</button>
         <button className='button-style' onClick={this.resetIterval}>Reset</button>
         </div>
-        <TimeList>
-        {this.props.timeList}
-        </TimeList>
       </>
     )
   }

@@ -1,10 +1,13 @@
 import Item from "./item"
 import "./app.css"
+import { useContext } from "react"
+import { TestContext } from "./testContext"
 
-const TimeList=(props)=>{
+const TimeList=()=>{
+    const context=useContext(TestContext)
     return(
         <div>
-            {props.children.map((c)=>(
+            {context.timeArray.map((c)=>(
                 <Item key={Math.random()}>{c}</Item>
             ))}           
         </div>
